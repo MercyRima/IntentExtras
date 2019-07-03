@@ -18,8 +18,8 @@ public class MainActivity extends AppCompatActivity {
     EditText etName;
     EditText etAge;
     Button btnSend;
-    TextView tvName;
-    TextView tvAge;
+    String name;
+    String age;
 
 
 
@@ -32,14 +32,19 @@ public class MainActivity extends AppCompatActivity {
         etName=findViewById(R.id.etName);
         etAge=findViewById(R.id.etAge);
         btnSend=findViewById(R.id.btnSend);
-        tvName=findViewById(R.id.tvName);
-        tvAge=findViewById(R.id.tvAge);
+
+
 
         btnSend.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                startActivity(new Intent(getBaseContext(),ReceiverActivity.class));
-//                Intent Intentextras=new Intent(getApplication(),ReceiverActivity.class);
+                Intent intent = new Intent(getBaseContext(), ReceiverActivity.class);
+                name=etName.getText().toString();
+                age=etAge.getText().toString();
+                intent.putExtra("etName",name);
+                intent.putExtra("etAge",age);
+                startActivity(intent);
+
 
 //                Toast.makeText(getApplicationContext(),"you have clicked a save button", Toast.LENGTH_LONG).show();
             }}
